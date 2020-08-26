@@ -42,5 +42,23 @@ services:
             - "./src/files:/var/www"
         ports: 
             - "8000:8000"
+        depends_on: 
+            - redis
+            - database
+        networks: 
+            - myapp
+    nginx:
+        build: ./nginx
+        container_name: nginx
+        entrypoint: sh nginx.sh
+        environment: 
+            - ServerName=localhost
+            - AppRedirect=php-app:8000
+        ports: 
+            - "80:80"
+        volumes:
+            - "./nginx/files:/etc/nginx"
+        depends_on: 
+            - php-app
         networks: 
             - myapp
