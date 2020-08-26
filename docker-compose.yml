@@ -41,7 +41,7 @@ services:
         volumes:
             - "./src/files:/var/www"
         ports: 
-            - "8000:8000"
+            - "9000:9000"
         depends_on: 
             - redis
             - database
@@ -53,7 +53,7 @@ services:
         entrypoint: sh nginx.sh
         environment: 
             - ServerName=localhost
-            - AppRedirect=php-app:8000
+            - AppRedirect=php-app:9000
         ports: 
             - "80:80"
         volumes:
