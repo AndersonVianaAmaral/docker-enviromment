@@ -28,6 +28,6 @@ steps:
   name: "gcr.io/cloud-builders/docker"
   args: ['build','-t','gcr.io/$PROJECT_ID/app-laravel:$SHORT_SHA','-f','dockerfile.prod','.']
 
-- id: "Pushing image"
+- id: "Pushing image !"
   name: "gcr.io/cloud-builders/docker"
   args: ['push','gcr.io/$PROJECT_ID/app-laravel:$SHORT_SHA']
